@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Позвать Алишера</title>
+</head>
+<body>
+  <h1>Нажмите, чтобы позвать Алишера</h1>
+  <button id="callBtn">Позвать</button>
+
+  <script>
+    const BOT_TOKEN = "7303261036:AAENvOEb4Og0COV_4kZKOb6dbfTQQTFfFWc";      // Вставь сюда токен бота
+    const CHAT_ID  = "1371920405";         // Вставь сюда chat_id
+    const MESSAGE  = "🚨 Вызов! Приложение запущено";
+
+    async function sendMessage() {
+      try {
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(MESSAGE)}`;
+        const response = await fetch(url);
+        if (response.ok) {
+          alert("Вызов отправлен!");
+        } else {
+          alert("Ошибка отправки вызова");
+        }
+      } catch (e) {
+        alert("Ошибка отправки вызова");
+      }
+    }
+
+    document.getElementById("callBtn").addEventListener("click", sendMessage);
+
+    // Авто-вызов при открытии страницы (если нужно):
+    // window.addEventListener("load", sendMessage);
+  </script>
+</body>
+</html>
